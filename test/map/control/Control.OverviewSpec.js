@@ -11,7 +11,7 @@ describe('Control.Overview', function () {
         document.body.appendChild(container);
         var option = {
             zoom: 17,
-            zoomAnimationDuration : 10,
+            zoomAnimationDuration : 20,
             center: center,
             overviewControl : true
         };
@@ -90,10 +90,10 @@ describe('Control.Overview', function () {
         var overview = new maptalks.control.Overview();
         overview.addTo(map);
         var zoom = overview._overview.getZoom();
-        setTimeout(function () {
-            expect(overview._overview.getZoom()).to.be.eql(zoom + 1);
+        map.on('zoomend', function () {
+            expect(overview._overview.getZoom()).not.to.be.eql(zoom);
             done();
-        }, 31);
+        });
         map.zoomIn();
     });
 
