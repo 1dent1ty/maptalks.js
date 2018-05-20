@@ -93,7 +93,7 @@ describe('Control.Overview', function () {
         setTimeout(function () {
             expect(overview._overview.getZoom()).to.be.eql(zoom + 1);
             done();
-        }, 20);
+        }, 31);
         map.zoomIn();
     });
 
